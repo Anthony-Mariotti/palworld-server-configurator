@@ -1,5 +1,5 @@
 export type PalworldSelectOption = {
-  label: string;
+  label?: string;
   value: string;
   disabled?: boolean;
 };
