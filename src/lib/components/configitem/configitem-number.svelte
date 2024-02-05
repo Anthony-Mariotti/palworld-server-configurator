@@ -9,7 +9,7 @@
 </script>
 
 <div class="flex items-center">
-    <label for={key} class="font-semibold text-lg">{key}</label>
+    <label for={key} class="font-semibold text-base lg:text-lg">{key}</label>
 </div>
 <div class="flex items-center font-semibold text-lg">
     {item.value}

@@ -9,7 +9,7 @@
 </script>
 
 <div class="flex items-center col-span-2">
-    <label for={key} class="font-semibold text-lg">{key}</label>
+    <label for={key} class="font-semibold text-base lg:text-lg">{key}</label>
 </div>
 <div class="flex max-w-xl w-full">
     <Select.Root

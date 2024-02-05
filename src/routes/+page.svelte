@@ -1,13 +1,5 @@
 <script lang="ts">
-  import { Button } from '$lib/components/ui/button';
-  import { Input } from '$lib/components/ui/input';
-  import { Slider } from '$lib/components/ui/slider';
-  import { Switch } from '$lib/components/ui/switch';
-
   import * as Card from '$lib/components/ui/card';
-  import * as Select from '$lib/components/ui/select';
-
-  import { CopyIcon, RotateCcwIcon } from 'lucide-svelte';
 
   import {
     PalworldBoolean,
@@ -40,7 +32,7 @@
 
     <div class="grid grid-flow-row gap-y-8">
       {#each configuration.getConfigItems() as [key, item]}
-        <div class="grid grid-cols-[1fr_min-content_36rem_min-content] gap-x-10 p-4 bg-gray-50">
+        <div class="grid grid-cols-[1fr_min-content_16rem_min-content] lg:grid-cols-[1fr_min-content_24rem_min-content] xl:grid-cols-[1fr_min-content_36rem_min-content] gap-x-10 p-4 bg-gray-50">
           {#if item.type === PalworldConfigType.TextInput && item instanceof PalworldString}
               <ConfigItem.String {key} bind:item={item} />
           {:else if item.type === PalworldConfigType.TextInput && item instanceof PalworldOptionalString}
@@ -68,7 +60,6 @@
                 {item.notice}
               </div>
           {/if}
-
         </div>
       {/each}
     </div>
