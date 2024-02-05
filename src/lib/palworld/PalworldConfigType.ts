@@ -1,11 +1,10 @@
-
 export enum PalworldConfigType {
-    TextInput,
-    SelectOne,
-    Number,
-    Decimal,
-    Port,
-    IpAddress,
-    Boolean,
-    Url
+  TextInput,
+  SelectOne,
+  Number,
+  Decimal,
+  Port,
+  IpAddress,
+  Boolean,
+  Url
 }
