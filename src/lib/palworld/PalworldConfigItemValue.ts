@@ -3,6 +3,7 @@ import { PalworldConfigType } from './PalworldConfigType';
 
 export default abstract class PalworldConfigItemValue<T> extends PalworldConfigItem {
   protected _value: T;
+  public default: T;
 
   constructor(
     type: PalworldConfigType,
@@ -13,6 +14,7 @@ export default abstract class PalworldConfigItemValue<T> extends PalworldConfigI
   ) {
     super(type, readonly, required, notice);
     this._value = value;
+    this.default = value;
   }
 
   abstract get value(): T;

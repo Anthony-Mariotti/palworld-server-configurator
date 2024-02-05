@@ -81,7 +81,7 @@ export default class PalworldConfiguration {
       true,
       { label: 'None', value: 'None' },
       [{ label: 'None', value: 'None' }],
-      'Difficulty is unable to be set at this time.'
+      'Pocketpair has not provided options to set this value yet.'
     );
     this.DayTimeSpeedRate = new PalworldDecimal(false, 1.0, 0.1, 2.0, 0.1);
     this.NightTimeSpeedRate = new PalworldDecimal(false, 1.0, 0.1, 2.0, 0.1);
