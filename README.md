@@ -1,38 +1,37 @@
-# create-svelte
+# Palworld Server Configurator
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
-
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+Configure your palworld server with easy sliders, toggles, and text boxes. No more finding and searching a large configuration file just to change one setting.
 
 ## Developing
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+You will need to install [Rust](https://www.rust-lang.org/) and system dependencies. This project uses [Tauri](https://tauri.app/) to create the desktop version and is a requirement to build. 
+
+### Prerequisites
+
+Follow [Tauri Prerequisites Guide](https://tauri.app/v1/guides/getting-started/prerequisites) to get your machine ready for development.
+
+### Starting the project
+
+Once you've completed the prerequisites and installed dependencies with `pnpm install`, start the development app or web server:
 
 ```bash
-npm run dev
+# starts the desktop app
+pnpm tauri dev
 
 # or start the server and open the app in a new browser tab
-npm run dev -- --open
+pnpm run dev -- --open
 ```
 
 ## Building
 
-To create a production version of your app:
+To create a production version:
 
 ```bash
-npm run build
+# desktop app
+pnpm tauri build
+
+# or web app
+pnpm run build
 ```
 
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+You can preview the web app production build with `pnpm run preview`.
