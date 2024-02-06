@@ -77,5 +77,7 @@ export {
     type BooleanProps,
     type IpAddressProps,
     type PortProps,
-    type UrlProps
+    type UrlProps,
+    //
+    Reset as ConfigItemReset
 }

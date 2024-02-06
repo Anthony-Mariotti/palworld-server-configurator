@@ -1,5 +1,6 @@
 <script lang="ts">
   import * as Card from '$lib/components/ui/card';
+  import * as Drawer from '$lib/components/ui/drawer';
 
   import {
     PalworldBoolean,
@@ -18,21 +19,42 @@
   
   import { ConfigDisplay } from '$lib/components/configdisplay';
   import * as ConfigItem from '$lib/components/configitem';
+    import { Button } from '$lib/components/ui/button';
+    import { CopyButton } from '$lib/components/copybutton';
 
   $: configuration = new PalworldConfiguration();
   $: output = configuration.output();
-</script>
 
-<Card.Root>
-  <Card.Header class="mx-auto w-full max-w-screen-2xl ">
-    <Card.Title>PalWorldSettings.ini</Card.Title>
-  </Card.Header>
-  <Card.Content class="mx-auto w-full max-w-screen-2xl flex flex-col gap-8">
-    <ConfigDisplay value={output} />
+  let drawContent: HTMLDivElement;
+  </script>
 
-    <div class="grid grid-flow-row gap-y-8">
+  <Card.Root>
+    <Card.Header class="mx-auto w-full max-w-screen-2xl">
+      <Card.Title class="text-2xl font-bold">PalWorldSettings.ini</Card.Title>
+    </Card.Header>
+    <Card.Content class="mx-auto w-full max-w-screen-2xl flex flex-col gap-8 pb-16">
+      <Drawer.Root>
+        <Drawer.Overlay asChild />
+        <Drawer.Trigger asChild let:builder>
+          <Button class="fixed bottom-0 p-6 rounded-b-none rounded-t-2xl text-lg z-10" builders={[builder]}>Generate Configuration File</Button>
+        </Drawer.Trigger>
+        <Drawer.Content class="max-h-[96%]" >
+          <div class="mx-auto w-full max-w-screen-2xl pb-4" bind:this={drawContent}>
+            <Drawer.Header class="text-xl font-bold">
+              PalWorldSettings.ini
+            </Drawer.Header>
+            <div class="flex flex-col gap-4 px-4">
+              <ConfigDisplay value={output} />
+              <div class="flex flex-row gap-2">
+                <CopyButton full text={output} />
+                <!-- <Button size="lg" class="rounded-lg w-full">Save to File</Button> -->
+              </div>
+            </div>
+          </div>
+        </Drawer.Content>
+      </Drawer.Root>
+    <div class="flex flex-col gap-y-4 lg:grid lg:grid-flow-row lg:gap-y-8">
       {#each configuration.getConfigItems() as [key, item]}
-        <div class="grid grid-cols-[1fr_min-content_16rem_min-content] lg:grid-cols-[1fr_min-content_24rem_min-content] xl:grid-cols-[1fr_min-content_36rem_min-content] gap-x-10 p-4 bg-gray-50">
           {#if item.type === PalworldConfigType.TextInput && item instanceof PalworldString}
               <ConfigItem.String {key} bind:item={item} />
           {:else if item.type === PalworldConfigType.TextInput && item instanceof PalworldOptionalString}
@@ -52,15 +74,6 @@
           {:else if item.type === PalworldConfigType.Url && item instanceof PalworldUrl}
               <ConfigItem.Url {key} bind:item={item} />
           {/if}
-          {#if item instanceof PalworldConfigItemValue}
-            <ConfigItem.Reset {key} bind:item={item} />
-          {/if}
-          {#if item.notice}
-              <div class="col-start-3 border-l-4 rounded-sm bg-yellow-300/10 border-l-yellow-300 pl-2 text-yellow-600 mt-2">
-                {item.notice}
-              </div>
-          {/if}
-        </div>
       {/each}
     </div>
   </Card.Content>

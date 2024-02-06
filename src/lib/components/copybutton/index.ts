@@ -3,6 +3,7 @@ import Root from './component.svelte';
 
 type Props = HTMLButtonAttributes & {
     text: string;
+    full: boolean;
 }
 
 export {

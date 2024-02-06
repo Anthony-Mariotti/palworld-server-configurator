@@ -5,7 +5,7 @@
   import { onMount } from 'svelte';
   import { Toaster } from '$lib/components/ui/sonner';
   import { ModeWatcher, setMode } from 'mode-watcher';
-  import { isTauri } from '$lib/utils';
+  import { cn, isTauri } from '$lib/utils';
   import type { WebviewWindow } from '@tauri-apps/api/window';
 
   let appWindow: WebviewWindow;
@@ -15,6 +15,7 @@
     if (isTauri) {
       appWindow = ((await import('@tauri-apps/api/window')).appWindow)
       title = await appWindow.title();
+      document.body.classList.add('overflow-hidden');
     }
   })
 </script>
@@ -38,7 +39,7 @@
     </div>
   </div>
 {/if}
-<div class="mt-10 max-h-[calc(100vh-2.5rem)] overflow-auto mb-16 ">
+<div class={cn(isTauri && 'max-h-[calc(100vh-2.5rem)] mt-10 overflow-auto mb-96', 'min-h-full')}>
   <Toaster theme="light" />
   <slot />
 </div>

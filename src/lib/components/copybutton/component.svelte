@@ -10,6 +10,7 @@
 
     let className: $$Props['class'] = undefined;
     export let text: $$Props['text'];
+    export let full: $$Props['full'] = false;
     export { className as class };
 
     let writeText: (text: string) => Promise<void>;
@@ -58,7 +59,7 @@
 
         try {
             const element = document.createElement('textarea');
-            element.id = crypto.randomUUID().split('-')[0];
+            element.id = "copy-config-area";
             element.disabled = true;
             element.classList.add(
                 'fixed',
@@ -68,7 +69,7 @@
             );
             element.value = text;
 
-            document.appendChild(element);
+            document.body.appendChild(element);
 
             element.click();
             element.select();
@@ -120,24 +121,30 @@
     let copied: boolean = false;
     let failed: boolean = false;
 
-    const copyClass = 'text-green-500 opacity-100 hover:text-green-500 hover:bg-transparent hover:cursor-default';
-    const failClass = 'text-red-500 opacity-100 hover:text-red-500 hover:bg-transparent hover:cursor-default';
-    const baseClass = 'opacity-25 hover:opacity-75 transition-all';
+    const copyClass = 'text-green-500 hover:text-green-500 hover:bg-primary hover:cursor-default';
+    const failClass = 'text-red-500 hover:text-red-500 hover:bg-primary hover:cursor-default';
+    const baseClass = 'transition-all';
 </script>
 
 <Button
     class={cn(
-        'rounded-full',
+        'rounded-lg',
+        full && 'text-lg w-full',
         copied && copyClass,
         failed && failClass,
         (!copied && !failed) && baseClass,
         className)}
-    size="icon"
-    variant="ghost"
+    size={full ? 'lg' : 'icon'}
+    variant={full ? 'default' : 'ghost'}
+    
     {...$$restProps}
     on:click={copy}
 >
-    {#if !copied && !failed}
+    {#if !copied && !failed && full}
+        Copy Configuration
+    {/if}
+
+    {#if !copied && !failed && !full}
         <CopyIcon />
     {/if}
 
