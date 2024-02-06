@@ -20,15 +20,15 @@
     }
   })
 </script>
-  <div class="h-10 bg-[#329ea3] select-none flex justify-between fixed top-0 left-0 right-0 z-[100]">
+  <div class="h-10 bg-primary text-opacity-100 select-none flex justify-between fixed top-0 left-0 right-0 z-[100]">
     <div data-tauri-drag-region class="grow flex items-center pl-4 gap-2">
       <img src="/favicon.png" alt="logo" class="w-5 h-5" />
-      <span data-tauri-drag-region class="text-base font-bold">{title}</span>
+      <span data-tauri-drag-region class="text-base tracking-wide font-bold">{title}</span>
     </div>
     <div data-tauri-drag-region class="flex items-center gap-2">
       <div>
         <Dialog.Root>
-          <Dialog.Trigger class="inline-flex justify-center items-center w-10 h-8 hover:bg-[#5bbec3] rounded-sm transition-all">
+          <Dialog.Trigger class="inline-flex justify-center items-center w-10 h-8 hover:bg-[#cb8cf4] rounded-sm transition-all">
               <InfoIcon class="w-5 h-5" />
           </Dialog.Trigger>
           <Dialog.Content>
@@ -39,16 +39,16 @@
           </Dialog.Content>
         </Dialog.Root>
         
-        <a href="https://github.com/Anthony-Mariotti/palworld-server-configurator" target="_blank" class="inline-flex justify-center items-center w-10 h-8 hover:bg-[#5bbec3] rounded-sm transition-all">
+        <a href="https://github.com/Anthony-Mariotti/palworld-server-configurator" target="_blank" class="inline-flex justify-center items-center w-10 h-8 hover:bg-[#cb8cf4] rounded-sm transition-all">
           <GithubIcon class="w-5 h-5" />
         </a>
       </div>
       <div>
         {#if isTauri}
-          <button id="titlebar-minimize" class="inline-flex justify-center items-center w-12 h-10 hover:bg-[#5bbec3] transition-all" on:click={appWindow.minimize}>
+          <button id="titlebar-minimize" class="inline-flex justify-center items-center w-12 h-10 hover:bg-[#cb8cf4] transition-all" on:click={appWindow.minimize}>
             <MinusIcon class="w-5 h-5" />
           </button>
-          <button id="titlebar-maximize" class="inline-flex justify-center items-center w-12 h-10 hover:bg-[#5bbec3] transition-all" on:click={appWindow.toggleMaximize}>
+          <button id="titlebar-maximize" class="inline-flex justify-center items-center w-12 h-10 hover:bg-[#cb8cf4] transition-all" on:click={appWindow.toggleMaximize}>
             <PictureInPicture2Icon class="w-5 h-5" />
           </button>
           <button id="titlebar-close" class="inline-flex justify-center items-center w-12 h-10 hover:bg-red-600 hover:text-white transition-all" on:click={appWindow.close}>

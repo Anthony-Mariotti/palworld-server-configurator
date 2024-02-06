@@ -77,8 +77,8 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.tauri.dev",
-      "longDescription": "",
+      "identifier": "com.anthonymariotti.palworldserverconfigurator",
+      "longDescription": "Configure your palworld server with easy sliders, toggles, and text boxes. No more finding and searching a large configuration file just to change one setting.",
       "macOS": {
         "entitlements": null,
         "exceptionDomain": "",
@@ -87,7 +87,7 @@
         "signingIdentity": null
       },
       "resources": [],
-      "shortDescription": "",
+      "shortDescription": "Configure your palworld server with easy sliders, toggles, and text boxes.",
       "targets": "all",
       "windows": {
         "certificateThumbprint": null,
@@ -110,7 +110,8 @@
         "width": 800,
         "decorations": false,
         "minWidth": 812,
-        "minHeight": 532
+        "minHeight": 532,
+        "center": true
       }
     ]
   }
