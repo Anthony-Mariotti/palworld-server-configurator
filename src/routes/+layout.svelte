@@ -10,7 +10,7 @@
   import type { WebviewWindow } from '@tauri-apps/api/window';
   import { Button } from '$lib/components/ui/button';
 
-  import { version as webVersion } from '$app/environment';
+  import { dev, version as webVersion } from '$app/environment';
   import { page } from '$app/stores';
 
   let appWindow: WebviewWindow;
@@ -25,6 +25,11 @@
       title = await appWindow.title();
       mode = 'Desktop';
       document.body.classList.add('overflow-hidden');
+    } else {
+      const analytics = (await import('@vercel/analytics')).inject;
+      analytics({
+        mode: dev ? 'development' : 'production'
+      });
     }
   });
 </script>
