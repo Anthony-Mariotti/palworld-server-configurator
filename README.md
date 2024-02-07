@@ -2,6 +2,8 @@
 
 Configure your palworld server with easy sliders, toggles, and text boxes. No more finding and searching a large configuration file just to change one setting.
 
+> Desktop version is currently unavailable at this time. GitHub Actions needs to be configured in order to build and release the installers. Cloning, building, and running the desktop app is still fully available if you would like to test drive the desktop app.
+
 ## Developing
 
 You will need to install [Rust](https://www.rust-lang.org/) and system dependencies. This project uses [Tauri](https://tauri.app/) to create the desktop version and is a requirement to build. 
