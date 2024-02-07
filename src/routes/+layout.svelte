@@ -11,6 +11,7 @@
   import { Button } from '$lib/components/ui/button';
 
   import { version as webVersion } from '$app/environment';
+    import { page } from '$app/stores';
 
   let appWindow: WebviewWindow;
   let title: string = 'Palworld Server Configurator';
@@ -27,6 +28,11 @@
     }
   })
 </script>
+
+  <svelte:head>
+    <meta name="robots" content={$page.url.hostname === 'palworldserverconfigurator.com' ? 'index, follow' : 'noindex, nofollow'}>
+  </svelte:head>
+
   <div class="h-10 bg-primary text-opacity-100 select-none flex justify-between fixed top-0 left-0 right-0 z-[100]">
     <div data-tauri-drag-region class="grow flex items-center pl-4 gap-2">
       <img src="/favicon.png" alt="logo" class="w-5 h-5" />
