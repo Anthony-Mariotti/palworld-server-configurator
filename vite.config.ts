@@ -1,6 +1,6 @@
 import { sveltekit } from '@sveltejs/kit/vite';
 import { defineConfig } from 'vitest/config';
-import { createViteLicensePlugin } from 'rollup-license-plugin'
+import { createViteLicensePlugin } from 'rollup-license-plugin';
 
 export default defineConfig({
   plugins: [

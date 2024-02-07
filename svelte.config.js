@@ -38,7 +38,7 @@ function getAdapter() {
 
 /** @returns {Promise<string>} **/
 function getWebVersion() {
-  return new Promise(async (resolve, reject) => {   
+  return new Promise(async (resolve, reject) => {
     try {
       const file = fileURLToPath(new URL('package.json', import.meta.url));
       const json = readFileSync(file, 'utf-8');
@@ -47,10 +47,9 @@ function getWebVersion() {
       resolve(pkg.version);
       return;
     } catch (err) {
-      reject('Failed to get version from package.json')
+      reject('Failed to get version from package.json');
     }
-  })
-  
+  });
 }
 
 export default config;

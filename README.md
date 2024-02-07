@@ -6,7 +6,7 @@ Configure your palworld server with easy sliders, toggles, and text boxes. No mo
 
 ## Developing
 
-You will need to install [Rust](https://www.rust-lang.org/) and system dependencies. This project uses [Tauri](https://tauri.app/) to create the desktop version and is a requirement to build. 
+You will need to install [Rust](https://www.rust-lang.org/) and system dependencies. This project uses [Tauri](https://tauri.app/) to create the desktop version and is a requirement to build.
 
 ### Prerequisites
 

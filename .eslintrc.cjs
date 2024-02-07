@@ -28,5 +28,5 @@ module.exports = {
       }
     }
   ],
-  ignorePatterns: ['**/components/ui/**']
+  ignorePatterns: ['**/components/ui/**', 'src-tauri/target/**']
 };

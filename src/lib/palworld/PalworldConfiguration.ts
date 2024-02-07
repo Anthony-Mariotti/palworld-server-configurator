@@ -91,7 +91,14 @@ export default class PalworldConfiguration {
 
     this.PalCaptureRate = new PalworldDecimal(false, 1.0, 0.5, 2.0, 0.1);
 
-    this.PalSpawnNumRate = new PalworldDecimal(false, 1.0, 0.5, 3.0, 0.1, 'Note: Affects game performance');
+    this.PalSpawnNumRate = new PalworldDecimal(
+      false,
+      1.0,
+      0.5,
+      3.0,
+      0.1,
+      'Note: Affects game performance'
+    );
 
     this.PalDamageRateAttack = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
 
@@ -154,8 +161,7 @@ export default class PalworldConfiguration {
 
     this.BaseCampMaxNum = new PalworldInteger(false, 1, 256, 128);
 
-    this.BaseCampWorkerMaxNum = new PalworldInteger(false, 1, 20, 15)
-    ;
+    this.BaseCampWorkerMaxNum = new PalworldInteger(false, 1, 20, 15);
     this.DropItemAliveMaxHours = new PalworldDecimal(false, 1.0, 0.5, 24.0, 0.1);
 
     this.bAutoResetGuildNoOnlinePlayers = new PalworldBoolean(false, false);
@@ -173,7 +179,7 @@ export default class PalworldConfiguration {
     this.bIsPvP = new PalworldBoolean(false, false);
 
     this.bCanPickupOtherGuildDeathPenaltyDrop = new PalworldBoolean(false, false);
-    
+
     this.bEnableNonLoginPenalty = new PalworldBoolean(false, true);
 
     this.bEnableFastTravel = new PalworldBoolean(false, true);
@@ -187,7 +193,7 @@ export default class PalworldConfiguration {
     this.CoopPlayerMaxNum = new PalworldInteger(false, 1, 32, 4);
 
     this.ServerPlayerMaxNum = new PalworldInteger(false, 1, 32, 32);
-    
+
     this.ServerName = new PalworldString(false, 128, 'Default Palworld Server');
 
     this.ServerDescription = new PalworldOptionalString(false, 300);
