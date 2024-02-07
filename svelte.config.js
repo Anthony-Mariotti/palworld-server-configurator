@@ -38,7 +38,7 @@ function getAdapter() {
 
 /** @returns {Promise<string>} **/
 function getWebVersion() {
-  return new Promise(async (resolve, reject) => {
+  return new Promise((resolve, reject) => {
     try {
       const file = fileURLToPath(new URL('package.json', import.meta.url));
       const json = readFileSync(file, 'utf-8');

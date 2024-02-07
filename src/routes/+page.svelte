@@ -4,7 +4,6 @@
 
   import {
     PalworldBoolean,
-    PalworldConfigItemValue,
     PalworldConfigType,
     PalworldConfiguration,
     PalworldDecimal,
