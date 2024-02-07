@@ -9,7 +9,20 @@ updates:
     directory: '/' # Location of package manifests
     schedule:
       interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'America/New_York'
+    target-branch: 'develop'
+    reviewers:
+      - 'Anthony-Mariotti'
+
   - package-ecosystem: 'cargo' # See documentation for possible values
     directory: '/src-tauri' # Location of package manifests
     schedule:
       interval: 'weekly'
+      day: 'monday'
+      time: '09:00'
+      timezone: 'America/New_York'
+    target-branch: 'develop'
+    reviewers:
+      - 'Anthony-Mariotti'
