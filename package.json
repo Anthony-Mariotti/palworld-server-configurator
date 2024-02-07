@@ -55,7 +55,7 @@
     "clsx": "^2.1.0",
     "cmdk-sv": "^0.0.13",
     "formsnap": "^0.4.3",
-    "lucide-svelte": "^0.321.0",
+    "lucide-svelte": "^0.323.0",
     "mode-watcher": "^0.2.0",
     "svelte-sonner": "^0.3.11",
     "sveltekit-superforms": "^1.13.4",
