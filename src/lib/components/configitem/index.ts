@@ -26,6 +26,7 @@ type Props = {
 };
 
 type ResetProps = Props & {
+  // eslint-disable-next-line
   item: PalworldConfigItemValue<any>;
 };
 

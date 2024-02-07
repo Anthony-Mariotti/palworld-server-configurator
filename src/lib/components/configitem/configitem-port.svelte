@@ -1,6 +1,6 @@
 <script lang="ts">
   import { PalworldConfigItemValue } from '$lib/palworld';
-  import { ConfigItemReset, type UrlProps } from '.';
+  import { ConfigItemReset } from '.';
   import type { PortProps } from '.';
   import { Input } from '../ui/input';
 
