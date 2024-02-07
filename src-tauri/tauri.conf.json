@@ -1,14 +1,14 @@
 {
   "$schema": "../node_modules/@tauri-apps/cli/schema.json",
   "build": {
-    "beforeBuildCommand": "pnpm run build",
-    "beforeDevCommand": "pnpm run dev --host",
+    "beforeBuildCommand": "pnpm run build:tauri",
+    "beforeDevCommand": "pnpm run dev:tauri --host",
     "devPath": "http://localhost:5173",
     "distDir": "../build"
   },
   "package": {
     "productName": "palworld-server-configurator",
-    "version": "0.1.0"
+    "version": "1.0.0-0"
   },
   "tauri": {
     "allowlist": {
@@ -93,7 +93,8 @@
         "certificateThumbprint": null,
         "digestAlgorithm": "sha256",
         "timestampUrl": ""
-      }
+      },
+      "publisher": "Anthony Mariotti"
     },
     "security": {
       "csp": null

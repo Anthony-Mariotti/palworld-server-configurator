@@ -8,14 +8,21 @@
   import { ModeWatcher } from 'mode-watcher';
   import { cn, isTauri } from '$lib/utils';
   import type { WebviewWindow } from '@tauri-apps/api/window';
+  import { Button } from '$lib/components/ui/button';
+
+  import { version as webVersion } from '$app/environment';
 
   let appWindow: WebviewWindow;
   let title: string = 'Palworld Server Configurator';
+  let mode: string = 'Web';
+  let version: string = webVersion;
 
   onMount(async () => {
     if (isTauri) {
       appWindow = ((await import('@tauri-apps/api/window')).appWindow)
+      version = (await (await import('@tauri-apps/api/app')).getVersion())
       title = await appWindow.title();
+      mode = 'Desktop';
       document.body.classList.add('overflow-hidden');
     }
   })
@@ -32,10 +39,32 @@
               <InfoIcon class="w-5 h-5" />
           </Dialog.Trigger>
           <Dialog.Content>
-            <Dialog.Header>
+            <Dialog.Header class="text-left border-b-2 pb-2">
               <Dialog.Title>Palworld Server Configurator</Dialog.Title>
-              <Dialog.Description>Created by Anthony Mariotti</Dialog.Description>
+              <Dialog.Description>
+                <Button href="https://github.com/Anthony-Mariotti/palworld-server-configurator" class="p-0" variant="link">Made with ❤️ on GitHub</Button>
+              </Dialog.Description>
             </Dialog.Header>
+            <div class="flex flex-col gap-2">
+              <section class="grid grid-cols-[1fr_3fr] gap-2">
+                <h2>Mode:</h2>
+                <p>{mode}</p>
+              </section>
+              <section class="grid grid-cols-[1fr_3fr] gap-2">
+                {#if isTauri}
+                  <h2>App Version:</h2>
+                {:else}
+                  <h2>Version:</h2>
+                {/if}
+                <p>{version}</p>
+              </section>
+              {#if isTauri}
+                <section class="grid grid-cols-[1fr_3fr] gap-2">
+                  <h2>Web Version:</h2>
+                  <p>{webVersion}</p>
+                </section>
+              {/if}
+            </div>
           </Dialog.Content>
         </Dialog.Root>
         

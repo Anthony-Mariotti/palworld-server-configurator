@@ -1,10 +1,10 @@
 [package]
 name = "app"
-version = "0.1.0"
-description = "A Tauri App"
-authors = ["you"]
-license = ""
-repository = ""
+version = "1.0.0-0"
+description = "Configure your palworld server with easy sliders, toggles, and text boxes. No more finding and searching a large configuration file just to change one setting."
+authors = ["Anthony Mariotti"]
+license = "GNU AGPLv3"
+repository = "https://github.com/Anthony-Mariotti/palworld-server-configurator"
 default-run = "app"
 edition = "2021"
 rust-version = "1.60"
