@@ -44,7 +44,7 @@
 </svelte:head>
 
 <div
-  class="fixed left-0 right-0 top-0 z-[100] flex h-10 select-none justify-between bg-primary text-opacity-100"
+  class="fixed left-0 right-0 top-0 z-[100] flex h-10 select-none justify-between bg-primary text-opacity-100 shadow"
 >
   <div data-tauri-drag-region class="flex grow items-center gap-2 pl-4">
     <img src="/favicon.png" alt="logo" class="h-5 w-5" />

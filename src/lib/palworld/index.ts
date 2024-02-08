@@ -9,11 +9,12 @@ import PalworldPort from './PalworldPort';
 import PalworldSelectOne from './PalworldSelectOne';
 import PalworldString from './PalworldString';
 import PalworldUrl from './PalworldUrl';
-import PalworldConfiguration from './PalworldConfiguration';
+import { PalworldStore } from './PalworldConfiguration';
 import { PalworldConfigType } from './PalworldConfigType';
 import type { PalworldSelectOption } from './PalworldSelectOption';
 
 export {
+  PalworldStore,
   PalworldBoolean,
   PalworldConfigItem,
   PalworldConfigItemValue,
@@ -26,6 +27,5 @@ export {
   PalworldString,
   PalworldUrl,
   PalworldConfigType,
-  PalworldConfiguration,
   type PalworldSelectOption
 };

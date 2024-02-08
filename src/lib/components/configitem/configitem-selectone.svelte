@@ -17,13 +17,11 @@
     <label for={key} class="text-base font-semibold lg:text-lg">{key}</label>
   </div>
   <div class="flex w-full lg:max-w-xl">
-    <Select.Root
-      selected={item.value}
-      disabled={item.readonly}
-      onSelectedChange={(e) => (item.value = e ?? item.default)}
-    >
+    <Select.Root bind:selected={item.value} items={item.options} disabled={item.readonly}>
       <Select.Trigger>
-        <Select.Value>{item.value}</Select.Value>
+        <Select.Value asChild>
+          <span>{item.value.value}</span>
+        </Select.Value>
       </Select.Trigger>
       <Select.Content>
         {#each item.options as option}
