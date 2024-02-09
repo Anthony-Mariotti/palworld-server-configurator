@@ -1,8 +1,9 @@
+import type { IniFile } from '$lib/types/iniFile';
 import { toast } from 'svelte-sonner';
 
 export const readIniFile = (input: Blob | string): IniFile => {
   // reference: https://gist.github.com/anonymous/dad852cde5df545ed81f1bc334ea6f72
-  var regex = {
+  const regex = {
     section: /^\s*\[\s*([^\]]*)\s*\]\s*$/,
     param: /^\s*([^=]+?)\s*=\s*(.*?)\s*$/,
     comment: /^\s*;.*$/
@@ -30,10 +31,10 @@ export const readIniFile = (input: Blob | string): IniFile => {
 
   if (file === '') return {};
 
-  var lines: Array<string> = file.split(/[\r\n]+/);
-
+  const lines: Array<string> = file.split(/[\r\n]+/);
+  const iniFile: IniFile = {};
   let section: string | undefined;
-  let iniFile: IniFile = {};
+
   lines.forEach((line: string) => {
     if (regex.comment.test(line)) {
       return;
@@ -67,8 +68,8 @@ export const readIniFile = (input: Blob | string): IniFile => {
 export const readFile = (
   file: Blob,
   cb?: {
-    onload?: (event: ProgressEvent<FileReader>) => any;
-    onerror?: (event: ProgressEvent<FileReader>) => any;
+    onload?: (event: ProgressEvent<FileReader>) => void;
+    onerror?: (event: ProgressEvent<FileReader>) => void;
   }
 ): void => {
   const reader = new FileReader();
