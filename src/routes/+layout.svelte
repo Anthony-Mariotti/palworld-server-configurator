@@ -68,6 +68,7 @@
               <Button
                 href="https://github.com/Anthony-Mariotti/palworld-server-configurator"
                 class="p-0"
+                target="_blank"
                 variant="link">Made with ❤️ on GitHub</Button
               >
             </Dialog.Description>
