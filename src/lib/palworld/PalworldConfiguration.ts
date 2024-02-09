@@ -13,7 +13,7 @@ import { PalworldConfigType } from './PalworldConfigType';
 import type { PalworldSelectOption } from './PalworldSelectOption';
 import { writable } from 'svelte/store';
 
-class PalworldConfiguration {
+export class PalworldConfiguration {
   Difficulty = new PalworldSelectOne(
     true,
     { label: 'None', value: 'None' },
