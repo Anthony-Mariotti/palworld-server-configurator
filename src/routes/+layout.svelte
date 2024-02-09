@@ -96,6 +96,9 @@
               <p>AGPL-3.0</p>
             </section>
           </div>
+          <Dialog.Footer>
+            <Button href="https://github.com/Anthony-Mariotti/palworld-server-configurator/issues" target="_blank">Report Issue</Button>
+          </Dialog.Footer>
         </Dialog.Content>
       </Dialog.Root>
 
