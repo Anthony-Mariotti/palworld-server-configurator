@@ -14,7 +14,7 @@
   <Button
     id={key.toLocaleLowerCase() + '-reset-button-ic'}
     class={cn('hidden lg:flex', {
-      'hidden': item.value === item.default
+      hidden: item.value === item.default
     })}
     variant="outline"
     size="icon"
@@ -27,7 +27,7 @@
   <Button
     id={key.toLocaleLowerCase() + '-reset-button-fw'}
     class={cn('flex w-full items-center justify-center lg:hidden', {
-      'hidden': item.value === item.default
+      hidden: item.value === item.default
     })}
     variant="outline"
     size="default"
