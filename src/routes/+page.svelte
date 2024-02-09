@@ -5,7 +5,6 @@
   import {
     PalworldBoolean,
     PalworldConfigType,
-    PalworldConfiguration,
     PalworldDecimal,
     PalworldInteger,
     PalworldIpAddress,
@@ -13,18 +12,17 @@
     PalworldPort,
     PalworldSelectOne,
     PalworldString,
-    PalworldUrl
+    PalworldUrl,
+    PalworldStore
   } from '$lib/palworld';
 
   import { ConfigDisplay } from '$lib/components/configdisplay';
   import * as ConfigItem from '$lib/components/configitem';
   import { Button } from '$lib/components/ui/button';
   import { CopyButton } from '$lib/components/copybutton';
+  import { LoadConfig } from '$lib/components/drawer/loadconfig';
 
-  $: configuration = new PalworldConfiguration();
-  $: output = configuration.output();
-
-  let drawContent: HTMLDivElement;
+  $: output = $PalworldStore.output();
 </script>
 
 <Card.Root>
@@ -32,29 +30,8 @@
     <Card.Title class="text-2xl font-bold">PalWorldSettings.ini</Card.Title>
   </Card.Header>
   <Card.Content class="mx-auto flex w-full max-w-screen-2xl flex-col gap-8 pb-16">
-    <Drawer.Root>
-      <Drawer.Overlay asChild />
-      <Drawer.Trigger asChild let:builder>
-        <Button
-          class="fixed bottom-0 z-10 rounded-b-none rounded-t-2xl p-6 text-lg"
-          builders={[builder]}>Generate Configuration File</Button
-        >
-      </Drawer.Trigger>
-      <Drawer.Content class="max-h-[96%]">
-        <div class="mx-auto w-full max-w-screen-2xl pb-4" bind:this={drawContent}>
-          <Drawer.Header class="text-xl font-bold">PalWorldSettings.ini</Drawer.Header>
-          <div class="flex flex-col gap-4 px-4">
-            <ConfigDisplay value={output} />
-            <div class="flex flex-row gap-2">
-              <CopyButton full text={output} />
-              <!-- <Button size="lg" class="rounded-lg w-full">Save to File</Button> -->
-            </div>
-          </div>
-        </div>
-      </Drawer.Content>
-    </Drawer.Root>
     <div class="flex flex-col gap-y-4 lg:grid lg:grid-flow-row lg:gap-y-8">
-      {#each configuration.getConfigItems() as [key, item]}
+      {#each $PalworldStore.getConfigItems() as [key, item]}
         {#if item.type === PalworldConfigType.TextInput && item instanceof PalworldString}
           <ConfigItem.String {key} bind:item />
         {:else if item.type === PalworldConfigType.TextInput && item instanceof PalworldOptionalString}
@@ -78,3 +55,31 @@
     </div>
   </Card.Content>
 </Card.Root>
+<div class="fixed bottom-0 z-10 w-full">
+  <div
+    class="mx-auto flex w-full max-w-screen-2xl justify-center gap-1 px-6 sm:justify-end sm:gap-4"
+  >
+    <LoadConfig />
+    <Drawer.Root>
+      <Drawer.Overlay asChild />
+      <Drawer.Trigger asChild let:builder>
+        <Button
+          class="rounded-b-none rounded-t-2xl px-4 py-6 text-lg shadow-[0_-10px_15px_-3px_rgba(0,0,0,0.1),0_-4px_6px_-4px_rgba(0,0,0,0.1)] sm:p-6"
+          builders={[builder]}>Generate Config File</Button
+        >
+      </Drawer.Trigger>
+      <Drawer.Content class="max-h-[80%]">
+        <div class="mx-auto w-full max-w-screen-2xl pb-4">
+          <Drawer.Header class="text-xl font-bold">PalWorldSettings.ini</Drawer.Header>
+          <div class="flex flex-col gap-4 px-4">
+            <ConfigDisplay value={output} />
+            <div class="flex flex-row gap-2">
+              <CopyButton full text={output} />
+              <!-- <Button size="lg" class="rounded-lg w-full">Save to File</Button> -->
+            </div>
+          </div>
+        </div>
+      </Drawer.Content>
+    </Drawer.Root>
+  </div>
+</div>

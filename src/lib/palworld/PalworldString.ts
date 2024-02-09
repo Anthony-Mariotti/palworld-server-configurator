@@ -10,6 +10,8 @@ export default class PalworldString extends PalworldConfigItemValue<string> {
   }
 
   public set value(input: string) {
+    if (this.readonly) return;
+    if (input.length > this.max) return;
     this._value = input;
   }
 

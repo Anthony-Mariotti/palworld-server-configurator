@@ -12,6 +12,7 @@
 
   import { dev, version as webVersion } from '$app/environment';
   import { page } from '$app/stores';
+  import { mediaQuery } from 'svelte-legos';
 
   let appWindow: WebviewWindow;
   let title: string = 'Palworld Server Configurator';
@@ -32,6 +33,8 @@
       });
     }
   });
+
+  const isLarge = mediaQuery('(min-width: 1024px)');
 </script>
 
 <svelte:head>
@@ -44,7 +47,7 @@
 </svelte:head>
 
 <div
-  class="fixed left-0 right-0 top-0 z-[100] flex h-10 select-none justify-between bg-primary text-opacity-100"
+  class="fixed left-0 right-0 top-0 z-[100] flex h-10 select-none justify-between bg-primary text-opacity-100 shadow"
 >
   <div data-tauri-drag-region class="flex grow items-center gap-2 pl-4">
     <img src="/favicon.png" alt="logo" class="h-5 w-5" />
@@ -65,6 +68,7 @@
               <Button
                 href="https://github.com/Anthony-Mariotti/palworld-server-configurator"
                 class="p-0"
+                target="_blank"
                 variant="link">Made with ❤️ on GitHub</Button
               >
             </Dialog.Description>
@@ -88,7 +92,17 @@
                 <p>{webVersion}</p>
               </section>
             {/if}
+            <section class="grid grid-cols-[1fr_3fr] gap-2">
+              <h2>License:</h2>
+              <p>AGPL-3.0</p>
+            </section>
           </div>
+          <Dialog.Footer>
+            <Button
+              href="https://github.com/Anthony-Mariotti/palworld-server-configurator/issues"
+              target="_blank">Report Issue</Button
+            >
+          </Dialog.Footer>
         </Dialog.Content>
       </Dialog.Root>
 
@@ -128,7 +142,8 @@
   </div>
 </div>
 <div class={cn(isTauri && 'mb-96 overflow-auto', 'mt-10 max-h-[calc(100vh-2.5rem)] min-h-full')}>
-  <Toaster theme="light" />
   <slot />
 </div>
+
+<Toaster theme="light" richColors closeButton position={$isLarge ? 'bottom-left' : 'top-center'} />
 <ModeWatcher defaultMode="light" track={false} />

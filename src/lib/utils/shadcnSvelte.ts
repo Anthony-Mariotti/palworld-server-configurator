@@ -54,5 +54,3 @@ export const flyAndScale = (
     easing: cubicOut
   };
 };
-
-export const isTauri: boolean = '__TAURI__' in window;

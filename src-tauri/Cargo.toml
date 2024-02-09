@@ -1,6 +1,6 @@
 [package]
 name = "app"
-version = "1.0.0-0"
+version = "1.0.0-1"
 description = "Configure your palworld server with easy sliders, toggles, and text boxes. No more finding and searching a large configuration file just to change one setting."
 authors = ["Anthony Mariotti"]
 license = "GNU AGPLv3"

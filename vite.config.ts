@@ -10,7 +10,7 @@ export default defineConfig({
       licenseOverrides: {
         // No dedicated LICENSE file. Found license in README.md
         // https://github.com/wobsoriano/svelte-sonner/blob/main/README.md#license
-        'svelte-sonner@0.3.11': 'MIT',
+        'svelte-sonner@0.3.12': 'MIT',
 
         // LICENSE file in on main, but not registering.
         // https://github.com/svecosystem/mode-watcher/blob/main/LICENSE
@@ -19,6 +19,8 @@ export default defineConfig({
     })
   ],
   test: {
-    include: ['src/**/*.{test,spec}.{js,ts}']
+    environment: 'jsdom',
+    include: ['src/**/*.{test,spec}.{js,ts}'],
+    setupFiles: ['./scripts/vitest-setup.js']
   }
 });

@@ -2,6 +2,8 @@
   import { PalworldConfigItemValue } from '$lib/palworld';
   import { ConfigItemReset, type BooleanProps } from '.';
   import { Switch } from '../ui/switch';
+  import * as Notice from '../notice';
+  import { InfoIcon } from 'lucide-svelte';
 
   type $$Props = BooleanProps;
 
@@ -10,7 +12,7 @@
 </script>
 
 <div
-  class="flex flex-col gap-y-4 bg-gray-50 p-4 lg:grid lg:grid-cols-[1fr_min-content_24rem_min-content] lg:gap-x-10 lg:gap-y-0 xl:grid-cols-[1fr_min-content_36rem_min-content]"
+  class="flex flex-col gap-y-4 bg-gray-50 p-4 lg:grid lg:grid-cols-[1fr_min-content_24rem_min-content] lg:gap-x-10 lg:gap-y-2 xl:grid-cols-[1fr_min-content_36rem_min-content]"
 >
   <label for={key} class="flex text-base font-semibold lg:text-lg">
     {key}
@@ -30,10 +32,9 @@
     <div class="hidden w-10 lg:block" />
   {/if}
   {#if item.notice}
-    <div
-      class="col-start-3 rounded-sm border-l-4 border-l-yellow-300 bg-yellow-300/10 pl-2 text-yellow-600 lg:mt-2"
-    >
-      {item.notice}
-    </div>
+    <Notice.Root variant="warning" class="col-start-3 lg:mt-2">
+      <InfoIcon class="h-4 w-4" />
+      <Notice.Title>{item.notice}</Notice.Title>
+    </Notice.Root>
   {/if}
 </div>

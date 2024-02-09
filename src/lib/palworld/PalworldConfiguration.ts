@@ -11,210 +11,228 @@ import PalworldString from './PalworldString';
 import PalworldUrl from './PalworldUrl';
 import { PalworldConfigType } from './PalworldConfigType';
 import type { PalworldSelectOption } from './PalworldSelectOption';
+import { writable } from 'svelte/store';
 
-export default class PalworldConfiguration {
-  Difficulty: PalworldSelectOne;
-  DayTimeSpeedRate: PalworldDecimal;
-  NightTimeSpeedRate: PalworldDecimal;
-  ExpRate: PalworldDecimal;
-  PalCaptureRate: PalworldDecimal;
-  PalSpawnNumRate: PalworldDecimal;
-  PalDamageRateAttack: PalworldDecimal;
-  PalDamageRateDefense: PalworldDecimal;
-  PlayerDamageRateAttack: PalworldDecimal;
-  PlayerDamageRateDefense: PalworldDecimal;
-  PlayerStomachDecreaceRate: PalworldDecimal;
-  PlayerStaminaDecreaceRate: PalworldDecimal;
-  PlayerAutoHPRegeneRate: PalworldDecimal;
-  PlayerAutoHpRegeneRateInSleep: PalworldDecimal;
-  PalStomachDecreaceRate: PalworldDecimal;
-  PalStaminaDecreaceRate: PalworldDecimal;
-  PalAutoHPRegeneRate: PalworldDecimal;
-  PalAutoHpRegeneRateInSleep: PalworldDecimal;
-  BuildObjectDamageRate: PalworldDecimal;
-  BuildObjectDeteriorationDamageRate: PalworldDecimal;
-  CollectionDropRate: PalworldDecimal;
-  CollectionObjectHpRate: PalworldDecimal;
-  CollectionObjectRespawnSpeedRate: PalworldDecimal;
-  EnemyDropItemRate: PalworldDecimal;
-  DeathPenalty: PalworldSelectOne;
-  bEnablePlayerToPlayerDamage: PalworldBoolean;
-  bEnableFriendlyFire: PalworldBoolean;
-  bEnableInvaderEnemy: PalworldBoolean;
-  bActiveUNKO: PalworldBoolean;
-  bEnableAimAssistPad: PalworldBoolean;
-  bEnableAimAssistKeyboard: PalworldBoolean;
-  DropItemMaxNum: PalworldInteger;
-  DropItemMaxNum_UNKO: PalworldInteger;
-  BaseCampMaxNum: PalworldInteger;
-  BaseCampWorkerMaxNum: PalworldInteger;
-  DropItemAliveMaxHours: PalworldDecimal;
-  bAutoResetGuildNoOnlinePlayers: PalworldBoolean;
-  AutoResetGuildTimeNoOnlinePlayers: PalworldDecimal;
-  GuildPlayerMaxNum: PalworldInteger;
-  PalEggDefaultHatchingTime: PalworldDecimal;
-  WorkSpeedRate: PalworldDecimal;
-  bIsMultiplay: PalworldBoolean;
-  bIsPvP: PalworldBoolean;
-  bCanPickupOtherGuildDeathPenaltyDrop: PalworldBoolean;
-  bEnableNonLoginPenalty: PalworldBoolean;
-  bEnableFastTravel: PalworldBoolean;
-  bIsStartLocationSelectByMap: PalworldBoolean;
-  bExistPlayerAfterLogout: PalworldBoolean;
-  bEnableDefenseOtherGuildPlayer: PalworldBoolean;
-  CoopPlayerMaxNum: PalworldInteger;
-  ServerPlayerMaxNum: PalworldInteger;
-  ServerName: PalworldString;
-  ServerDescription: PalworldOptionalString;
-  AdminPassword: PalworldString;
-  ServerPassword: PalworldOptionalString;
-  PublicPort: PalworldPort;
-  PublicIP: PalworldIpAddress;
-  RCONEnabled: PalworldBoolean;
-  RCONPort: PalworldPort;
-  Region: PalworldOptionalString;
-  bUseAuth: PalworldBoolean;
-  BanListURL: PalworldString;
+export class PalworldConfiguration {
+  Difficulty = new PalworldSelectOne(
+    true,
+    { label: 'None', value: 'None' },
+    [{ label: 'None', value: 'None' }],
+    'Pocketpair has not provided options to set this value yet.'
+  );
 
-  constructor() {
-    this.Difficulty = new PalworldSelectOne(
-      true,
-      { label: 'None', value: 'None' },
-      [{ label: 'None', value: 'None' }],
-      'Pocketpair has not provided options to set this value yet.'
-    );
-    this.DayTimeSpeedRate = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
+  DayTimeSpeedRate: PalworldDecimal = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
 
-    this.NightTimeSpeedRate = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
+  NightTimeSpeedRate = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
 
-    this.ExpRate = new PalworldDecimal(false, 1.0, 0.1, 20.0, 0.1);
+  ExpRate = new PalworldDecimal(false, 1.0, 0.1, 20.0, 0.1);
 
-    this.PalCaptureRate = new PalworldDecimal(false, 1.0, 0.5, 2.0, 0.1);
+  PalCaptureRate = new PalworldDecimal(false, 1.0, 0.5, 2.0, 0.1);
 
-    this.PalSpawnNumRate = new PalworldDecimal(
-      false,
-      1.0,
-      0.5,
-      3.0,
-      0.1,
-      'Note: Affects game performance'
-    );
+  PalSpawnNumRate = new PalworldDecimal(
+    false,
+    1.0,
+    0.5,
+    3.0,
+    0.1,
+    'Note: Affects game performance'
+  );
 
-    this.PalDamageRateAttack = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
+  PalDamageRateAttack = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
 
-    this.PalDamageRateDefense = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
+  PalDamageRateDefense = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
 
-    this.PlayerDamageRateAttack = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
+  PlayerDamageRateAttack = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
 
-    this.PlayerDamageRateDefense = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
+  PlayerDamageRateDefense = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
 
-    this.PlayerStomachDecreaceRate = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
+  PlayerStomachDecreaceRate = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
 
-    this.PlayerStaminaDecreaceRate = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
+  PlayerStaminaDecreaceRate = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
 
-    this.PlayerAutoHPRegeneRate = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
+  PlayerAutoHPRegeneRate = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
 
-    this.PlayerAutoHpRegeneRateInSleep = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
+  PlayerAutoHpRegeneRateInSleep = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
 
-    this.PalStomachDecreaceRate = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
+  PalStomachDecreaceRate = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
 
-    this.PalStaminaDecreaceRate = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
+  PalStaminaDecreaceRate = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
 
-    this.PalAutoHPRegeneRate = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
+  PalAutoHPRegeneRate = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
 
-    this.PalAutoHpRegeneRateInSleep = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
+  PalAutoHpRegeneRateInSleep = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
 
-    this.BuildObjectDamageRate = new PalworldDecimal(false, 1.0, 0.5, 3.0, 0.1);
+  BuildObjectDamageRate = new PalworldDecimal(false, 1.0, 0.5, 3.0, 0.1);
 
-    this.BuildObjectDeteriorationDamageRate = new PalworldDecimal(false, 1.0, 0.0, 10.0, 0.1);
+  BuildObjectDeteriorationDamageRate = new PalworldDecimal(false, 1.0, 0.0, 10.0, 0.1);
 
-    this.CollectionDropRate = new PalworldDecimal(false, 1.0, 0.5, 3.0, 0.1);
+  CollectionDropRate = new PalworldDecimal(false, 1.0, 0.5, 3.0, 0.1);
 
-    this.CollectionObjectHpRate = new PalworldDecimal(false, 1.0, 0.5, 3.0, 0.1);
+  CollectionObjectHpRate = new PalworldDecimal(false, 1.0, 0.5, 3.0, 0.1);
 
-    this.CollectionObjectRespawnSpeedRate = new PalworldDecimal(false, 1.0, 0.3, 5.0, 0.1);
+  CollectionObjectRespawnSpeedRate = new PalworldDecimal(false, 1.0, 0.3, 5.0, 0.1);
 
-    this.EnemyDropItemRate = new PalworldDecimal(false, 1.0, 0.3, 5.0, 0.1);
+  EnemyDropItemRate = new PalworldDecimal(false, 1.0, 0.3, 5.0, 0.1);
 
-    this.DeathPenalty = new PalworldSelectOne(false, { label: 'All', value: 'All' }, [
-      { label: 'None', value: 'None' },
-      { label: 'Items', value: 'Item' },
-      { label: 'Items And Equipment', value: 'ItemAndEquipment' },
-      { label: 'All', value: 'All' }
-    ]);
+  DeathPenalty = new PalworldSelectOne(false, { label: 'All', value: 'All' }, [
+    { label: 'None', value: 'None' },
+    { label: 'Items', value: 'Item' },
+    { label: 'Items And Equipment', value: 'ItemAndEquipment' },
+    { label: 'All', value: 'All' }
+  ]);
 
-    this.bEnablePlayerToPlayerDamage = new PalworldBoolean(false, false);
+  bEnablePlayerToPlayerDamage = new PalworldBoolean(false, false);
 
-    this.bEnableFriendlyFire = new PalworldBoolean(false, false);
+  bEnableFriendlyFire = new PalworldBoolean(false, false);
 
-    this.bEnableInvaderEnemy = new PalworldBoolean(false, true);
+  bEnableInvaderEnemy = new PalworldBoolean(false, true);
 
-    this.bActiveUNKO = new PalworldBoolean(false, false);
+  bActiveUNKO = new PalworldBoolean(false, false);
 
-    this.bEnableAimAssistPad = new PalworldBoolean(false, true);
+  bEnableAimAssistPad = new PalworldBoolean(false, true);
 
-    this.bEnableAimAssistKeyboard = new PalworldBoolean(false, false);
+  bEnableAimAssistKeyboard = new PalworldBoolean(false, false);
 
-    this.DropItemMaxNum = new PalworldInteger(false, 0, 5000, 3000);
+  DropItemMaxNum = new PalworldInteger(false, 0, 5000, 3000);
 
-    this.DropItemMaxNum_UNKO = new PalworldInteger(false, 0, 500, 100);
+  DropItemMaxNum_UNKO = new PalworldInteger(false, 0, 500, 100);
 
-    this.BaseCampMaxNum = new PalworldInteger(false, 1, 256, 128);
+  BaseCampMaxNum = new PalworldInteger(false, 1, 256, 128);
 
-    this.BaseCampWorkerMaxNum = new PalworldInteger(false, 1, 20, 15);
-    this.DropItemAliveMaxHours = new PalworldDecimal(false, 1.0, 0.5, 24.0, 0.1);
+  BaseCampWorkerMaxNum = new PalworldInteger(false, 1, 20, 15);
 
-    this.bAutoResetGuildNoOnlinePlayers = new PalworldBoolean(false, false);
+  DropItemAliveMaxHours = new PalworldDecimal(false, 1.0, 0.5, 24.0, 0.1);
 
-    this.AutoResetGuildTimeNoOnlinePlayers = new PalworldDecimal(false, 72.0, 1.0, 100.0, 0.1);
+  bAutoResetGuildNoOnlinePlayers = new PalworldBoolean(false, false);
 
-    this.GuildPlayerMaxNum = new PalworldInteger(false, 1, 32, 20);
+  AutoResetGuildTimeNoOnlinePlayers = new PalworldDecimal(false, 72.0, 1.0, 100.0, 0.1);
 
-    this.PalEggDefaultHatchingTime = new PalworldDecimal(false, 72.0, 0.0, 240.0, 0.1);
+  GuildPlayerMaxNum = new PalworldInteger(false, 1, 32, 20);
 
-    this.WorkSpeedRate = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
+  PalEggDefaultHatchingTime = new PalworldDecimal(false, 72.0, 0.0, 240.0, 0.1);
 
-    this.bIsMultiplay = new PalworldBoolean(false, false);
+  WorkSpeedRate = new PalworldDecimal(false, 1.0, 0.1, 5.0, 0.1);
 
-    this.bIsPvP = new PalworldBoolean(false, false);
+  bIsMultiplay = new PalworldBoolean(false, false);
 
-    this.bCanPickupOtherGuildDeathPenaltyDrop = new PalworldBoolean(false, false);
+  bIsPvP = new PalworldBoolean(false, false);
 
-    this.bEnableNonLoginPenalty = new PalworldBoolean(false, true);
+  bCanPickupOtherGuildDeathPenaltyDrop = new PalworldBoolean(false, false);
 
-    this.bEnableFastTravel = new PalworldBoolean(false, true);
+  bEnableNonLoginPenalty = new PalworldBoolean(false, true);
 
-    this.bIsStartLocationSelectByMap = new PalworldBoolean(false, true);
+  bEnableFastTravel = new PalworldBoolean(false, true);
 
-    this.bExistPlayerAfterLogout = new PalworldBoolean(false, false);
+  bIsStartLocationSelectByMap = new PalworldBoolean(false, true);
 
-    this.bEnableDefenseOtherGuildPlayer = new PalworldBoolean(false, false);
+  bExistPlayerAfterLogout = new PalworldBoolean(false, false);
 
-    this.CoopPlayerMaxNum = new PalworldInteger(false, 1, 32, 4);
+  bEnableDefenseOtherGuildPlayer = new PalworldBoolean(false, false);
 
-    this.ServerPlayerMaxNum = new PalworldInteger(false, 1, 32, 32);
+  CoopPlayerMaxNum = new PalworldInteger(false, 1, 32, 4);
 
-    this.ServerName = new PalworldString(false, 128, 'Default Palworld Server');
+  ServerPlayerMaxNum = new PalworldInteger(false, 1, 32, 32);
 
-    this.ServerDescription = new PalworldOptionalString(false, 300);
+  ServerName = new PalworldString(false, 128, 'Default Palworld Server');
 
-    this.AdminPassword = new PalworldString(false, 128, '');
+  ServerDescription = new PalworldOptionalString(false, 300);
 
-    this.ServerPassword = new PalworldOptionalString(false, 128);
+  AdminPassword = new PalworldString(false, 128, '');
 
-    this.PublicPort = new PalworldPort(false, 8211);
+  ServerPassword = new PalworldOptionalString(false, 128);
 
-    this.PublicIP = new PalworldIpAddress(false, '');
+  PublicPort = new PalworldPort(false, 8211);
 
-    this.RCONEnabled = new PalworldBoolean(false, false);
+  PublicIP = new PalworldIpAddress(false, '');
 
-    this.RCONPort = new PalworldPort(false, 25575);
+  RCONEnabled = new PalworldBoolean(false, false);
 
-    this.Region = new PalworldOptionalString(false, 128);
+  RCONPort = new PalworldPort(false, 25575);
 
-    this.bUseAuth = new PalworldBoolean(false, true);
+  Region = new PalworldOptionalString(false, 128);
 
-    this.BanListURL = new PalworldUrl(false, 'https://api.palworldgame.com/api/banlist.txt');
+  bUseAuth = new PalworldBoolean(false, true);
+
+  BanListURL = new PalworldUrl(false, 'https://api.palworldgame.com/api/banlist.txt');
+
+  private portNumberKeys: string[] = ['PublicPort', 'RCONPort'];
+
+  private ipAddressKeys: string[] = ['PublicIP'];
+
+  private urlKeys: string[] = ['BanListURL'];
+
+  private enumKeys: string[] = ['Difficulty', 'DeathPenalty'];
+
+  constructor(current?: Record<string, string>) {
+    if (!current) return;
+    for (const [key, value] of Object.entries(current)) {
+      if (key in this) {
+        if (this[key as keyof PalworldConfiguration] instanceof PalworldConfigItem) {
+          if (this.ipAddressKeys.includes(key)) {
+            // console.log('Ip', { key: key, value: value });
+            (this[key as keyof PalworldConfiguration] as PalworldIpAddress).value = value.slice(
+              1,
+              -1
+            );
+            continue;
+          }
+
+          if (this.portNumberKeys.includes(key)) {
+            // console.log('Port', { key: key, value: value });
+            (this[key as keyof PalworldConfiguration] as PalworldPort).value =
+              Number.parseInt(value);
+            continue;
+          }
+
+          if (this.urlKeys.includes(key)) {
+            // console.log('Url', { key: key, value: value });
+            (this[key as keyof PalworldConfiguration] as PalworldUrl).value = value.slice(1, -1);
+            continue;
+          }
+
+          if (this.enumKeys.includes(key)) {
+            // console.log('Enum', { key: key, value: value });
+            (this[key as keyof PalworldConfiguration] as PalworldSelectOne).value = {
+              label: key,
+              value: value
+            };
+            // console.log('Manual', (this[key as keyof PalworldConfiguration] as PalworldSelectOne).value);
+            continue;
+          }
+
+          if (Number.isInteger(Number.parseFloat(value)) && value.indexOf('.') === -1) {
+            // console.log('Integer', { key: key, value: value });
+            (this[key as keyof PalworldConfiguration] as PalworldInteger).value =
+              Number.parseInt(value);
+            continue;
+          }
+
+          if (Number.isInteger(Number.parseInt(value))) {
+            // console.log('Float', { key: key, value: value });
+            (this[key as keyof PalworldConfiguration] as PalworldConfigItemValue<number>).value =
+              Number.parseFloat(value);
+            continue;
+          }
+
+          if (value.toLocaleLowerCase() === 'true' || value.toLocaleLowerCase() === 'false') {
+            // console.log('Boolean', { key: key, value: value });
+            (this[key as keyof PalworldConfiguration] as PalworldBoolean).value =
+              value.toLocaleLowerCase() === 'true' ? true : false;
+            continue;
+          }
+
+          if (value.startsWith('"') && value.endsWith('"')) {
+            // console.log('String', { key: key, value: value });
+            (this[key as keyof PalworldConfiguration] as PalworldConfigItemValue<string>).value =
+              value.slice(1, -1);
+            continue;
+          }
+
+          // TODO: Failed
+          console.warn('Failed', key);
+        }
+      }
+    }
   }
 
   public getConfigItems(): Array<[string, PalworldConfigItem]> {
@@ -249,7 +267,7 @@ export default class PalworldConfiguration {
           }
           case PalworldConfigType.SelectOne: {
             const selected = config.value as PalworldSelectOption;
-            output += `${key}="${selected.value}",`;
+            output += `${key}=${selected.value},`;
             break;
           }
           case PalworldConfigType.Decimal: {
@@ -272,3 +290,15 @@ export default class PalworldConfiguration {
     return output;
   }
 }
+
+const store = () => {
+  const { subscribe, set, update } = writable(new PalworldConfiguration());
+
+  return {
+    subscribe,
+    set,
+    load: (input: Record<string, string>) => update(() => new PalworldConfiguration(input))
+  };
+};
+
+export const PalworldStore = store();

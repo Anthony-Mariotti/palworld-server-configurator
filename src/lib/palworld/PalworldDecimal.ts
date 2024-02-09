@@ -21,6 +21,9 @@ export default class PalworldDecimal extends PalworldConfigItemValue<number> {
   }
 
   public set value(input: number) {
+    if (this.readonly) return;
+    if (input < this.min) return;
+    if (input > this.max) return;
     this._value = input;
   }
 
