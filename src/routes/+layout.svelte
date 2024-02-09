@@ -12,6 +12,7 @@
 
   import { dev, version as webVersion } from '$app/environment';
   import { page } from '$app/stores';
+  import { mediaQuery } from 'svelte-legos';
 
   let appWindow: WebviewWindow;
   let title: string = 'Palworld Server Configurator';
@@ -32,6 +33,8 @@
       });
     }
   });
+
+  const isLarge = mediaQuery('(min-width: 1024px)');
 </script>
 
 <svelte:head>
@@ -128,7 +131,8 @@
   </div>
 </div>
 <div class={cn(isTauri && 'mb-96 overflow-auto', 'mt-10 max-h-[calc(100vh-2.5rem)] min-h-full')}>
-  <Toaster theme="light" />
   <slot />
 </div>
+
+<Toaster theme="light" richColors closeButton position={$isLarge ? 'bottom-left' : 'top-center'} />
 <ModeWatcher defaultMode="light" track={false} />
