@@ -91,6 +91,10 @@
                 <p>{webVersion}</p>
               </section>
             {/if}
+            <section class="grid grid-cols-[1fr_3fr] gap-2">
+              <h2>License:</h2>
+              <p>AGPL-3.0</p>
+            </section>
           </div>
         </Dialog.Content>
       </Dialog.Root>
