@@ -62,7 +62,7 @@
     "clsx": "^2.1.0",
     "cmdk-sv": "^0.0.13",
     "formsnap": "^0.4.3",
-    "lucide-svelte": "^0.323.0",
+    "lucide-svelte": "^0.334.0",
     "mode-watcher": "^0.2.0",
     "svelte-legos": "^0.2.2",
     "svelte-sonner": "^0.3.12",
