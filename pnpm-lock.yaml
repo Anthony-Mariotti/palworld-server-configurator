@@ -9,8 +9,8 @@ dependencies:
     specifier: ^1.1.3
     version: 1.1.3
   bits-ui:
-    specifier: ^0.17.0
-    version: 0.17.0(svelte@4.2.10)
+    specifier: ^0.19.2
+    version: 0.19.2(svelte@4.2.10)
   clsx:
     specifier: ^2.1.0
     version: 2.1.0
@@ -555,8 +555,8 @@ packages:
       svelte: 4.2.10
     dev: false
 
-  /@melt-ui/svelte@0.71.2(svelte@4.2.10):
-    resolution: {integrity: sha512-GDUErhAphEoEOLpcBjQ84BgzRR6M3344fQE4QYFffwT7aedWak7CvNsECgeig1Y5xvfDmeEaFnGlOQXIBucJYw==}
+  /@melt-ui/svelte@0.75.2(svelte@4.2.10):
+    resolution: {integrity: sha512-EZYH5iEzHs/CPsWqRlH6AnJ70sTuPB4llVK3ajafWig6I5q3qyGU8NIz4aozUssL0edf9BKmyDVAy6Vksy1fbA==}
     peerDependencies:
       svelte: '>=3 <5'
     dependencies:
@@ -1429,13 +1429,13 @@ packages:
       svelte: 4.2.10
     dev: false
 
-  /bits-ui@0.17.0(svelte@4.2.10):
-    resolution: {integrity: sha512-K73jjco1qPmvGXMQtTkZG6K36UmNrPR21u+C1jzoRWmF3NnUfDP4hPJnAci0LosUycfvOxtaHB1M4awvLvQXyQ==}
+  /bits-ui@0.19.2(svelte@4.2.10):
+    resolution: {integrity: sha512-cB5TZPztgd3t93BM4v3M81ve9xWPML9Mb5Db8j8NcSiZaIYEc7At7LB2GX/YCl+AkFI53R8QUa4STbIcBB5isQ==}
     peerDependencies:
       svelte: ^4.0.0
     dependencies:
       '@internationalized/date': 3.5.1
-      '@melt-ui/svelte': 0.71.2(svelte@4.2.10)
+      '@melt-ui/svelte': 0.75.2(svelte@4.2.10)
       nanoid: 5.0.5
       svelte: 4.2.10
     dev: false
